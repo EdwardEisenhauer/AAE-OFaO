@@ -1,0 +1,13 @@
+\section{Some task}
+Question: Light of wavelength of 500nm has been introduced to the step-index optical fiber with a core diameter $2a=5\mu m$, $n_1=1.461$, $n_2=1.455$. Explain if this is a single mode fiber. What is the cut-off wavelength for this fiber?\bigskip
+
+To determine the operation mode of such a fibre we may use a normalized frequency formula:
+\begin{equation}\label{eq:norm-freq}
+    V = \frac{2\pi a}{\lambda}\sqrt{n_{core}^2-n_{clad}^2} = 4.156
+\end{equation}
+
+The condition for the single-mode operation is $V<2.405$, therefore for $\lambda=500nm$ the considered fibre is multi-mode. To determine fibre's cutoff wavelength we simply transform Equation~\ref{eq:norm-freq} to obtain:
+\begin{equation}
+    \lambda_{cutoff} = \frac{2\pi a}{2.405}\sqrt{n_{core}^2-n_{clad}^2} = 864nm,
+\end{equation}
+above for which the fibre will be single-mode.

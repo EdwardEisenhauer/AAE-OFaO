@@ -1,0 +1,49 @@
+\section{Numerical Aperture}\nocite{Swirniak, Sobon, Urbanczyk, optfib}
+
+Question: Explain what is the numerical aperture of optical waveguide. How this parameter can be calculated for specific waveguide?\bigskip
+
+Numerical aperture (NA) is an inherent parameter of all of the optical devices. It describes the maximum angle at which the indecent light might be accepted and thus propagated further. In case of an optical fibre it is directly related with the total internal reflection phenomenon, presented in Fig.\ref{fig:of_angles}, in which light beam hitting a core-cladding boundary at an angle greater than a critical angle $\theta_c$, will be reflected and propagated further.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Acceptance_Angle.png}
+    \caption{Critical angle $\theta_c$ as measured between indecent ray and fibre transverse axis, and acceptance angle $\theta_a$ as measured between indecent ray and fibre longitudinal axis. $\theta_a$ depends only on the core and cladding refractive indices ($n_1$ and $n_2$). Based on~\cite{Sobon}}
+    \label{fig:of_angles}
+\end{figure}
+
+All of the accepted and propagated light rays form an acceptance cone. Numerical aperture is then defined as
+\begin{equation}
+    NA = n\sin{\theta_a},
+\end{equation}
+where $n$ is a refractive index of a medium from which the ray hits the fibre's face\footnote{$\approx1$ for air.}. In practice, a different formula is used to calculate the optical fibre NA, incorporating its (core and cladding) refractive indices. The derivation of such a formula for a step-index fibre may be obtained straight from a Snell's law:
+\begin{equation}
+    \label{eqn:snell_law}
+    n_1 \sin{\theta_1} = n_2 \sin{\theta_2}
+\end{equation}
+
+By increasing $\theta_1$ so that $\theta_2 = \frac{\pi}{4}$, and substituting $n_1$ and $n_2$ for the $n_{core}$ and $n_{clad}$ respectively, we obtain a critical angle formula:
+
+\begin{equation}
+    \theta_c = \arcsin{\frac{n_{clad}}{n_{core}}}
+\end{equation}
+
+Then, a relation between $\theta_a$ and $\theta_c$ may be represented as:
+
+\begin{equation*}
+    n\sin{\theta_a} = n_{core}\sin{\left(\frac{\pi}{4} - \theta_c\right)}
+\end{equation*}
+
+which can be transformed into
+
+\begin{equation*}
+\begin{split}
+    n^2\sin^2{\theta_a} &= n^2_{core}\cos^2{\theta_c} \\
+    n^2\sin^2{\theta_a} &= n^2_{core}\left(1 - \sin^2{\theta_c}\right) \\
+    n^2\sin^2{\theta_a} &= n^2_{core} - n^2_{clad}
+\end{split}
+\end{equation*}
+
+and finally:
+
+\begin{equation}
+    NA = n\sin{\theta_a} = \sqrt{n^2_{core} - n^2_{clad}}.
+\end{equation}
