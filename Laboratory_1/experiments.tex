@@ -1,0 +1,152 @@
+\section{Experiments}
+
+\subsection{Numerical Aperture estimation}
+Numerical aperture of an optical fibre can be calculated via the basic trigonometry if one can measure the output beam diameter $D$ at a given length $L$ from the fibre's aperture.
+The ratio of the beam radius to the mentioned length is a tangent of the acceptance angle.
+Based on this, we may transftom the~\autoref{eqn:NA} into:
+\begin{equation}
+    NA = \sin\arctan{\frac{D}{2L}} = \frac{D}{2\sqrt{L^2 + \frac{D^2}{4}}}
+\end{equation}
+
+For the NA estimation a He-Ne laser operating at \SI{632.8}{nm} coupled into five different fibres was used.
+The setup diagram is presented in \autoref{fig:setup_NA}.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{setup_NA.pdf}
+    \caption{Experimental setup for the NA measurements.
+      He-Ne laser (1) generates the light beam at \SI{632.8}{nm}, which is focused by a lens (2), so it can be propagated through the fibre (3) and finally be projected onto the screen (4)}
+    \label{fig:setup_NA}
+\end{figure}
+The end of the fibre aiming the lens was mounted on a table with the ability to move in the XYZ axes, so the fibre could be aligned with the laser beam.
+The screen was positioned at distances $L_n$ from the fibre aperture, so we could take an averaged value\footnote{Of the components, not the results!}.
+The beam diameter was judged by eye\footnote{To obtain a precise measurement, diameter of the beam should be determined for the $I=\frac{I_{max}}{e^2}$.}.
+
+% The commented content comes from the remote classes in 2022.
+% Consider useful information and delete the unnecessary content.
+% The fibres used in the experiments were:
+% \begin{enumerate}
+%     \item High-power applications optical fibre with $\phi_{core}=\SI{105}{\micro\metre}$.
+%     \item Standard communication multi-mode optical fibre with $\phi_{core}=\SI{62.5}{\micro\metre}$.
+%     \item Single-mode telecommunication fibre for $\lambda=\SI{1.5}{\micro\metre}$ with $\phi_{core}=\SI{10}{\micro\metre}$.
+%     \item Some mysterious fibre.
+%     \item Single-mode fibre for propagation of the pumping laser radiation at $\lambda=\SI{980}{\nano\metre}$.
+% \end{enumerate}
+% \begin{table}[]
+%     \centering
+%     \begin{tabular}{c||c|c|c||c}
+%         Fibre no. & $\phi_{core} [\SI{}{\micro\metre}]$ & $L [\SI{}{\centi\metre}]$ & $D [\SI{}{\milli\metre}]$ & NA\\
+%         \hline\hline
+%         \multirow{4}{*}{1} & \multirow{4}{*}{105} & 10 & 19 & \multirow{4}{*}{0.084}\\
+%         & & 15 & 24 \\
+%         & & 20 & 33 \\
+%         & & 25 & 42 \\
+%         \hline
+%         \multirow{2}{*}{2} & \multirow{2}{*}{62.5} & 4 & 2 & \multirow{2}{*}{0.025}\\
+%         & & 8 & 4 \\
+%         \hline
+%         \multirow{2}{*}{3} & \multirow{2}{*}{10} & 5 & 5 & \multirow{2}{*}{0.040}\\
+%         & & 10 & 7 \\
+%         \hline
+%         4 & -- & -- & -- & -- \\
+%         \hline
+%         \multirow{2}{*}{5} & \multirow{2}{*}{--} & 10 & 16 & \multirow{2}{*}{0.075}\\
+%         & & 15 & 24 \\
+%         & & 20 & 31 \\
+%         & & 25 & 35 \\
+%     \end{tabular}
+%     \caption{$\phi_{core}$ -- fibre core diameter; $L$ -- distance from the fibre aperture to the screen; $D$ -- projected beam diameter}
+%     \label{tab:NA}
+% \end{table}
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c||c|c||c}
+        Fibre no. & $L [\SI{}{\centi\metre}]$ & $D [\SI{}{\milli\metre}]$ & NA\\
+        \hline\hline
+        \multirow{4}{*}{1} & 10 & 19 & \multirow{4}{*}{0.084}\\
+        & 15 & 24 \\
+        & 20 & 33 \\
+        & 25 & 42 \\
+        \hline
+        \multirow{2}{*}{2} & 4 & 2 & \multirow{2}{*}{0.025}\\
+        & 8 & 4 \\
+        \hline
+        \multirow{2}{*}{3} & 5 & 5 & \multirow{2}{*}{0.040}\\
+        & 10 & 7 \\
+        \hline
+        4 & -- & -- & -- \\
+        \hline
+        \multirow{4}{*}{5} & 10 & 16 & \multirow{4}{*}{0.075}\\
+        & 15 & 24 \\
+        & 20 & 31 \\
+        & 25 & 35 \\
+    \end{tabular}
+    \caption{$L$ -- distance from the fibre aperture to the screen; $D$ -- projected beam diameter}
+    \label{tab:NA}
+\end{table}
+
+% Each fibre projected somehow a unique image: for (1) the projected pattern resembled a multi-mode pattern (of definitely high order); the "modes" in (2) were a little bigger than those in (1); for (3) we could observe just couple of modes; for (4) we could observe four distinguishable modes; with the last (5) fibre only one distinguishable mode was clearly visible.
+
+The results of the measurements together with the NA estimation are shown in Table~\ref{tab:NA}.
+% All but (3) oscillate around $NA=0.1$, and tweaking with the $D$ in the range of 30\% resulted in minor final value changes.
+
+% All of these values were compared with the fibres offered by ThorLabs:
+
+% (1) may be compared to the FG105LVA~\cite{FG105LVA}, a high-power multi-mode fiber with $\phi_{core}=\SI{105}{\micro\metre}$ and $NA=0.1\pm 0.015$.
+
+% (2) may compared only with the GIF625~\cite{GIF625}, but its $NA=0.275$.
+
+% (3) may be compared to the SM600~\cite{SM600}, a single-mode fiber with $NA=\numrange{0.10}{0.14}$.
+
+% (4) was some mysterious fibre able to guide 4 distinguishable modes. As mentioned in Section~\ref{normalized_frequency}, $V$ required for such an action is $\frac{V^2}{2}>4$ for step-index and $\frac{V^2}{4}>4$ for graded-index fibre. The profile of this fibre seemed to be sharp (distinguishable high-intensity centre and profile's "tail"), so I would assume graded-index fibre, unfortunately ThorLabs does not provide information about the refractive indices of the core and cladding, therefore precise comparison is not possible.
+
+% (5) for this fibre the normalized frequency had to be around 2.405, as sometimes second mode was visible, and assuming average value of square root of Eq.~\ref{eqn:v}, we can estimate that its $\phi_{core}$:
+% \begin{equation*}
+%     2.405 \approx \frac{\pi \phi_{core }}{\SI{632.8}{\nano\metre}}0.1\rightarrow\phi_{core}\approx\SI{4.8}{\micro\metre}.
+% \end{equation*}
+
+\subsection{Losses introduced by the fibre and its connectors}
+
+For the loss' measurements we used the standard telecommunication single-mode fibres SMF28 terminated with the FC/APC connectors.
+Each of the fibres' ends were inspected via the microscope for any dirtiness, and cleaned via rubbing its tip with a sheet of paper if necessary. 
+The results are presented in~\autoref{tab:losses}.
+\begin{table}
+    \centering
+    \begin{tabular}{c|c|c}
+        Number of patchcords & Power [$\qty{}{\dBm}$] & Loss [$\qty{}{\dB}$]\\
+        \hline\hline
+        1 & 6.73 & 0.00 \\
+        2 & 6.54 & 0.19 \\
+        3 & 6.28 & 0.45 \\
+        4 & 6.24 & 0.49 \\
+        5 & 5.87 & 0.86
+    \end{tabular}
+    \caption{Losses measurements}
+    \label{tab:losses}
+\end{table}
+
+The interesting measurement is change from 3 to 4 patchords with only \qty{0.04}{\dB} loss.
+Such good value is probably the result of improving other connection during displacing the patcords.
+Tightening the FC/APC connectors might decreate the signal if two angled faces of the optical fibre meet and push againts each other, bending them and thus displacing the cores.
+
+The last measurement was a 24 km fibre spool.
+Connected in one direction it had 1.43 dBm.
+In the opposite direction it had 1.55 dBm, and after fiddling with the connectors it reached 1.87 dBm.
+Altough one can elaborate on in-fibre phenomena, it was most probably, as before, the result of introducing core position changes due to poor connections.
+If we would like to perform any on the above measurements correct, we would have to reconnect the fibres multiple times.
+
+% Why tightening the FC/APC connector may decrease the signal?
+% Because two angled faces of the optical fibre may meet and push againts each other, bending them and displacing the cores.
+
+% Szpula - 24 km
+
+% 1.43 dBm
+% w drugą stronę 1.55 dBm, jak sie pokreci to 1.87 dBm
+
+% \section{Conclusions}
+% -- almost single mode for our red right (for sure has the smallest core diameter). Signle-mode for 980nm
+
+% if a shorter wavelength propagate in the fiber it may be a multi mode
+
+% Different diameter of the core -- different amount of the guided mode
+% \footnote{Note, that the communication OFs are suited to use with the infrared light.}

@@ -14,183 +14,24 @@
   per-mode=symbol
 }
 
-\title{Optical Fibers and Optocommunication --- Laboratory 1: Basic parameters of optical fibers}
-\author{Sergiusz Warga 230757}
+\DeclareSIUnit{\belmilliwatt}{Bm}
+\DeclareSIUnit{\dBm}{\deci\belmilliwatt}
+
+\title{Optical Fibers and Optocommunication --- Laboratory 1:
+  Basic parameters of optical fibers}
+\author{Jakub Jaworski 252929\\Sergiusz Warga 230757}
 \date{}
 \reportgroup{Even Monday 13:15}
+
 \reporttutor{dr inż.~Paweł Kaczmarek}
 
 \begin{document}
+
 \maketitle
 
-\section{Theoretical introduction}
-\nocite{Urbanczyk, 10.5555/1296182, FedStd}
-An optical fibre (OF) is a communication medium used as a guide for infrared light.
-A basic OF is a glass wire with two layers --- a core and surrounding cladding --- with different refractive indices, which details are presented in Section~\ref{sec:core_cladding}.
-A typical OF has a cladding diameter of the order of \qty{100}{\um}.
-Its principle of operation is the total internal reflection phenomenon thoroughly explained in Section~\ref{sec:NA}.
-Due to its relatively low power loss on a given length, it is widely used in long-range communication.
+\include{theoretical_introduction}
 
-Optical fibres may be divided by their cross-section shape (planar or cylindrical), 
-
-\subsection{Numerical Aperture}\label{sec:NA}
-Numerical aperture (NA) is an inherent parameter of all of the optical devices. It describes the maximum angle at which the indecent light might be accepted and thus propagated further. In case of an optical fibre it is directly related to the total internal reflection phenomenon, presented in Fig.\ref{fig:of_angles}, in which light beam hitting a core-cladding boundary at an angle greater than a critical angle $\theta_c$, will be reflected and propagated along the fibre.
-\begin{figure}[]
-    \centering
-    \includegraphics[width=0.7\textwidth]{Acceptance_Angle.png}
-    \caption{Critical angle $\theta_c$ as measured between indecent ray and fibre transverse axis, and acceptance angle $\theta_a$ as measured between indecent ray and fibre longitudinal axis. $\theta_a$ depends only on the core and cladding refractive indices ($n_1$ and $n_2$). Based on~\cite{Sobon}}
-    \label{fig:of_angles}
-\end{figure}
-
-All of the accepted and propagated light rays form an acceptance cone. Numerical aperture is then defined as
-\begin{equation}\label{eqn:NA}
-    NA = n\sin{\theta_a},
-\end{equation}
-where $n$ is a refractive index of a medium from which the ray hits the fibre's face\footnote{If this medium is the air, $n$ could be approximated to $1$.}. In practice, a different formula is used to calculate the optical fibre NA, incorporating its core and cladding refractive indices. The derivation of such a formula for a step-index fibre may be obtained straight from a Snell's law:
-\begin{equation}
-    \label{eqn:snell_law}
-    n_1 \sin{\theta_1} = n_2 \sin{\theta_2}
-\end{equation}
-
-By increasing $\theta_1$ so that $\theta_2 = \frac{\pi}{4}$, and substituting $n_1$ and $n_2$ for the $n_{core}$ and $n_{clad}$ respectively, we obtain a critical angle formula:
-
-\begin{equation}
-    \theta_c = \arcsin{\frac{n_{clad}}{n_{core}}}
-\end{equation}
-
-Then, a relation between $\theta_a$ and $\theta_c$ may be represented as:
-
-\begin{equation*}
-    n\sin{\theta_a} = n_{core}\sin{\left(\frac{\pi}{4} - \theta_c\right)}
-\end{equation*}
-
-which can be transformed into
-
-\begin{equation*}
-\begin{split}
-    n^2\sin^2{\theta_a} &= n^2_{core}\cos^2{\theta_c} \\
-    n^2\sin^2{\theta_a} &= n^2_{core}\left(1 - \sin^2{\theta_c}\right) \\
-    n^2\sin^2{\theta_a} &= n^2_{core} - n^2_{clad}
-\end{split}
-\end{equation*}
-
-and finally:
-
-\begin{equation}\label{eqn:NA_fibre}
-    NA = n\sin{\theta_a} = \sqrt{n^2_{core} - n^2_{clad}}.
-\end{equation}
-
-The above equation for calculating the optical fibre's numerical aperture presents clearly important requirement: for the total internal reflection to occur in the fibre, the refractive index of a core has to be greater that the refractive index of a cladding ($n_{core}>n_{clad}$).
-
-\subsection{Core and cladding refractive indices}\label{sec:core_cladding}
-As was stated in the end of the Section~\ref{sec:NA}, the fibre is able to guide the light beam if its $n_{core}>n_{clad}$. This condition assumes that the core and cladding refractive indices are uniformly distributed throughout their volumes. Such a distribution is called a step-index profile and is presented in Figure~\ref{fig:step_index}. 
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.3\textwidth]{step-index-profile.pdf}
-    \caption{Refractive index distribution in core and cladding with a step-index profile}
-    \label{fig:step_index}
-\end{figure}
-
-\subsection{Modes}
-We distinguish single-mode and multi-mode optical fibres. A mode is a transverse field distribution propagating along the fibre without any change except the phase. An OF can be characterised by a finite number of modes it guides -- each with its own field distribution. 
-
-An optical fibre is a single-mode if it guides only one mode -- only one type of the light beam. To be so its core has to be thin enough -- usually of the order of $3--12\mu m$.
-
-A problem with the multi-mode step-index fibre, is that each ray travels a different path -- thus the dispersion may occur. To handle this problem, a grading-index profile can be used. $n=\frac{c}{v}$
-
-Multi-mode $>50\mu m$
-
-Cladding usually $125\mu m$ and $>200\mu m$ for multi-mode and double-clad4
-
-\subsection{Normalized frequency $V$}\label{normalized_frequency}
-Normalized frequency is a dimensionless quantity $V$, allowing to determine the operation mode of a fibre, given by:
-\begin{equation}\label{eqn:v}
-    V = \frac{2\pi r_{core }}{\lambda}\sqrt{n_{core}^2-n_{clad}^2}
-\end{equation}
-
-A fibre will be in a single-mode, if $V<2.405$. Value of $V>2.405$ will result in a multi-mode operation. After transformation, the same formula may be used to calculate the cut-off frequency $\lambda_{cut-off}$, above which the fibre will be single-mode as well as for the fibre parameters design. What's more, a step-index fibre is able to guide $\frac{V^2}{2}$ modes, and a graded-index one $\frac{V^2}{4}$~\cite{agrawal6}. 
-
-\subsection{Attenuation}\label{sec:attenuation}
-\subsection{Optical windows}
-
-\section{Experiments}
-
-\subsection{Numerical Aperture estimation}
-Numerical aperture of an optical fibre can be calculated via the basic trigonometry if one can measure the output beam diameter $D$ at a given length $L$ from the fibre's aperture. The ratio of the beam radius to the mentioned length is a tangent of the acceptance angle. Based on the Equation~\ref{eqn:NA} this expression can transformed into:
-\begin{equation}
-    NA = \sin\arctan{\frac{D}{2L}} = \frac{D}{2\sqrt{L^2 + \frac{D^2}{4}}}
-\end{equation}
-
-For the NA estimation a He-Ne laser operating at \SI{632.8}{nm} together with five different fibres was used. The full setup diagram is presented in Figure~\ref{fig:setup_NA}.
-\begin{figure}[]
-    \centering
-    \includegraphics[width=0.7\textwidth]{setup_NA.pdf}
-    \caption{Experimental setup for the NA measurements. He-Ne laser (1) generates the light beam at \SI{632.8}{nm}, which is focused by a lens (2), so it can be propagated through the fibre (3) and finally be projected onto the screen (4).}
-    \label{fig:setup_NA}
-\end{figure}
-The end of the fibre aiming the lens was mounted on a table with the ability to move in the XYZ axes, so the fibre could be aligned with the laser beam. The screen was positioned at a distance $L_1=\SI{10}{cm}$ and $L_2=\SI{25}{cm}$ from the fibre aperture, so we could take an averaged value\footnote{Of the components, not the results!}. The beam diameter was measured by the tutor experienced in analysing the Gaussian profiles\footnote{To obtain a precise measurement, diameter of the beam should be determined for the $I=\frac{I_{max}}{e^2}$.}.
-
-The fibres used in the experiments were:
-\begin{enumerate}
-    \item High-power applications optical fibre with $\phi_{core}=\SI{105}{\micro\metre}$.
-    \item Standard communication multi-mode optical fibre with $\phi_{core}=\SI{62.5}{\micro\metre}$.
-    \item Single-mode telecommunication fibre for $\lambda=\SI{1.5}{\micro\metre}$ with $\phi_{core}=\SI{10}{\micro\metre}$.
-    \item Some mysterious fibre.
-    \item Single-mode fibre for propagation of the pumping laser radiation at $\lambda=\SI{980}{\nano\metre}$.
-\end{enumerate}
-\begin{table}[]
-    \centering
-    \begin{tabular}{c||c|c|c||c}
-        Fibre no. & $\phi_{core} [\SI{}{\micro\metre}]$ & $L [\SI{}{\centi\metre}]$ & $D [\SI{}{\milli\metre}]$ & NA\\
-        \hline\hline
-        \multirow{2}{*}{1} & \multirow{2}{*}{105} & 10 & 18 & \multirow{2}{*}{0.090}\\
-        & & 25 & 45 \\
-        \hline
-        \multirow{2}{*}{2} & \multirow{2}{*}{62.5} & 10 & 18 & \multirow{2}{*}{0.083}\\
-        & & 25 & 40 \\
-        \hline
-        \multirow{2}{*}{3} & \multirow{2}{*}{10} & 10 & 15 & \multirow{2}{*}{0.057}\\
-        & & 25 & 25 \\
-        \hline
-        \multirow{2}{*}{4} & \multirow{2}{*}{--} & 10 & 22 & \multirow{2}{*}{0.102}\\
-        & & 25 & 50 \\
-        \hline
-        \multirow{2}{*}{5} & \multirow{2}{*}{--} & 10 & 22 & \multirow{2}{*}{0.094}\\
-        & & 25 & 44 \\
-    \end{tabular}
-    \caption{$\phi_{core}$ -- fibre core diameter; $L$ -- distance from the fibre aperture to the screen; $D$ -- projected beam diameter}
-    \label{tab:NA}
-\end{table}
-
-Each fibre projected somehow a unique image: for (1) the projected pattern resembled a multi-mode pattern (of definitely high order); the "modes" in (2) were a little bigger than those in (1); for (3) we could observe just couple of modes; for (4) we could observe four distinguishable modes; with the last (5) fibre only one distinguishable mode was clearly visible.
-
-The results of the measurements together with the NA estimation are shown in Table~\ref{tab:NA}. All but (3) oscillate around $NA=0.1$, and tweaking with the $D$ in the range of 30\% resulted in minor final value changes. All of these values were compared with the fibres offered by ThorLabs:
-
-(1) may be compared to the FG105LVA~\cite{FG105LVA}, a high-power multi-mode fiber with $\phi_{core}=\SI{105}{\micro\metre}$ and $NA=0.1\pm 0.015$.
-
-(2) may compared only with the GIF625~\cite{GIF625}, but its $NA=0.275$.
-
-(3) may be compared to the SM600~\cite{SM600}, a single-mode fiber with $NA=\numrange{0.10}{0.14}$.
-
-(4) was some mysterious fibre able to guide 4 distinguishable modes. As mentioned in Section~\ref{normalized_frequency}, $V$ required for such an action is $\frac{V^2}{2}>4$ for step-index and $\frac{V^2}{4}>4$ for graded-index fibre. The profile of this fibre seemed to be sharp (distinguishable high-intensity centre and profile's "tail"), so I would assume graded-index fibre, unfortunately ThorLabs does not provide information about the refractive indices of the core and cladding, therefore precise comparison is not possible.
-
-(5) for this fibre the normalized frequency had to be around 2.405, as sometimes second mode was visible, and assuming average value of square root of Eq.~\ref{eqn:v}, we can estimate that its $\phi_{core}$:
-\begin{equation*}
-    2.405 \approx \frac{\pi \phi_{core }}{\SI{632.8}{\nano\metre}}0.1\rightarrow\phi_{core}\approx\SI{4.8}{\micro\metre}.
-\end{equation*}
-
-\subsection{Losses introduced by the fibre and its connectors}
-
-For the loss' measurements we used the standard telecommunication single-mode fibres SMF28 terminated with the FC/APC connectors. Each of the fibres' ends were inspected via the microscope for any dirtiness, and cleaned via rubbing its tip with a sheet of paper if necessary. 
-
-\section{Conclusions}
--- almost single mode for our red right (for sure has the smallest core diameter). Signle-mode for 980nm
-
-if a shorter wavelength propagate in the fiber it may be a multi mode
-
-Different diameter of the core -- different amount of the guided mode
-\footnote{Note, that the communication OFs are suited to use with the infrared light.}
+\include{experiments}
 
 \bibliographystyle{alpha}
 \bibliography{bibliography}

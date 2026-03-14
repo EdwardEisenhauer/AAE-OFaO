@@ -1,6 +1,6 @@
 BUILDDIR = `pwd`/build
 OUTDIR = `pwd`/out
-LATEX_OPTIONS = -pdf -halt-on-error
+LATEX_OPTIONS = -pdf -halt-on-error -xelatex
 
 PACKAGE_NAME = WUSTReport
 SOURCE_DIRS = Laboratory_1/ Laboratory_3/

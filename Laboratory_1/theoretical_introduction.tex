@@ -1,0 +1,93 @@
+\section{Theoretical introduction}
+\nocite{Urbanczyk, 10.5555/1296182, FedStd}
+An optical fibre (OF) is a communication medium used as a guide for infrared light.
+A basic OF is a glass wire with two layers --- a core and surrounding cladding --- with different refractive indices, which details are presented in Section~\ref{sec:core_cladding}.
+A typical OF has a cladding diameter of the order of \qty{100}{\um}.
+Its principle of operation is the total internal reflection phenomenon thoroughly explained in Section~\ref{sec:NA}.
+Due to its relatively low power loss on a given length, it is widely used in long-range communication.
+
+Optical fibres may be divided according to their cross-section shape (planar or cylindrical), refractive-index profile (step-index or graded-index), and number of guided modes (single-mode or multi-mode).
+
+\subsection{Numerical Aperture}\label{sec:NA}
+Numerical aperture (NA) is an inherent parameter of all of the optical devices. It describes the maximum angle at which the indecent light might be accepted and thus propagated further. In case of an optical fibre it is directly related to the total internal reflection phenomenon, presented in Fig.\ref{fig:of_angles}, in which light beam hitting a core-cladding boundary at an angle greater than a critical angle $\theta_c$, will be reflected and propagated along the fibre.
+\begin{figure}[]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Acceptance_Angle.png}
+    \caption{Critical angle $\theta_c$ as measured between indecent ray and fibre transverse axis, and acceptance angle $\theta_a$ as measured between indecent ray and fibre longitudinal axis. $\theta_a$ depends only on the core and cladding refractive indices ($n_1$ and $n_2$). Based on~\cite{Sobon}}
+    \label{fig:of_angles}
+\end{figure}
+
+All of the accepted and propagated light rays form an acceptance cone. Numerical aperture is then defined as
+\begin{equation}\label{eqn:NA}
+    NA = n\sin{\theta_a},
+\end{equation}
+where $n$ is a refractive index of a medium from which the ray hits the fibre's face\footnote{If this medium is the air, $n$ could be approximated to $1$.}. In practice, a different formula is used to calculate the optical fibre NA, incorporating its core and cladding refractive indices. The derivation of such a formula for a step-index fibre may be obtained straight from a Snell's law:
+\begin{equation}
+    \label{eqn:snell_law}
+    n_1 \sin{\theta_1} = n_2 \sin{\theta_2}
+\end{equation}
+
+By increasing $\theta_1$ so that $\theta_2 = \frac{\pi}{4}$, and substituting $n_1$ and $n_2$ for the $n_{core}$ and $n_{clad}$ respectively, we obtain a critical angle formula:
+
+\begin{equation}
+    \theta_c = \arcsin{\frac{n_{clad}}{n_{core}}}
+\end{equation}
+
+Then, a relation between $\theta_a$ and $\theta_c$ may be represented as:
+
+\begin{equation*}
+    n\sin{\theta_a} = n_{core}\sin{\left(\frac{\pi}{4} - \theta_c\right)}
+\end{equation*}
+
+which can be transformed into
+
+\begin{equation*}
+\begin{split}
+    n^2\sin^2{\theta_a} &= n^2_{core}\cos^2{\theta_c} \\
+    n^2\sin^2{\theta_a} &= n^2_{core}\left(1 - \sin^2{\theta_c}\right) \\
+    n^2\sin^2{\theta_a} &= n^2_{core} - n^2_{clad}
+\end{split}
+\end{equation*}
+
+and finally:
+
+\begin{equation}\label{eqn:NA_fibre}
+    NA = n\sin{\theta_a} = \sqrt{n^2_{core} - n^2_{clad}}.
+\end{equation}
+
+The above equation for calculating the optical fibre's numerical aperture presents clearly important requirement: for the total internal reflection to occur in the fibre, the refractive index of a core has to be greater that the refractive index of a cladding ($n_{core}>n_{clad}$).
+
+\subsection{Core and cladding refractive indices}\label{sec:core_cladding}
+As was stated in the end of the Section~\ref{sec:NA}, the fibre is able to guide the light beam if its $n_{core}>n_{clad}$. This condition assumes that the core and cladding refractive indices are uniformly distributed throughout their volumes. Such a distribution is called a step-index profile and is presented in Figure~\ref{fig:step_index}. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.3\textwidth]{step-index-profile.pdf}
+    \caption{Refractive index distribution in core and cladding with a step-index profile}
+    \label{fig:step_index}
+\end{figure}
+
+\subsection{Modes}
+We distinguish single-mode and multi-mode optical fibres.
+A mode is a transverse field distribution propagating along the fibre without any change except the phase.
+An OF can be characterised by a finite number of modes it guides --- each with its own field distribution. 
+
+An optical fibre is a single-mode if it guides only one mode --- only one type of the light beam.
+To be so its core has to be thin enough, usually of the order of \qtyrange{3}{12}{\um}.
+
+In a multi-mode step-index fibre, different modes propagate along different optical paths and therefore arrive at different times, which leads to intermodal dispersion. To reduce this effect, a graded-index profile is used: the refractive index decreases with radius, so higher-order modes travel faster in lower-index regions and the modal delays become more equal.
+
+The refractive index is defined as $n=\frac{c}{v}$, where $c$ is the speed of light in vacuum and $v$ is the phase velocity in the medium. Typical core diameters are about \qtyrange{8}{10}{\um} for telecommunication single-mode fibres and \qtyrange{50}{62.5}{\um} for standard multi-mode fibres, while cladding diameter is typically \qty{125}{\um}.
+
+\subsection{Normalized frequency $V$}\label{normalized_frequency}
+Normalized frequency is a dimensionless quantity $V$, allowing to determine the operation mode of a fibre, given by:
+\begin{equation}\label{eqn:v}
+    V = \frac{2\pi r_{core }}{\lambda}\sqrt{n_{core}^2-n_{clad}^2}
+\end{equation}
+
+A fibre will be in a single-mode, if $V<2.405$. Value of $V>2.405$ will result in a multi-mode operation. After transformation, the same formula may be used to calculate the cut-off frequency $\lambda_{cut-off}$, above which the fibre will be single-mode as well as for the fibre parameters design. What's more, a step-index fibre is able to guide $\frac{V^2}{2}$ modes, and a graded-index one $\frac{V^2}{4}$~\cite{agrawal6}. 
+
+\subsection{Attenuation}\label{sec:attenuation}
+\todo[inline]{Consider developing it. Do we need it?}
+\subsection{Optical windows}
+\todo[inline]{Consider developing it. Do we need it?}
